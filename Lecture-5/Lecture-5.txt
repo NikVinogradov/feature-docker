@@ -25,3 +25,5 @@ BestEffort, а с неравными ограничениями burstable
 Guaranteed - имеют бооьшие шансы запуститься
 
 Первые кого гасим - bestEffort потом burstable а только потом Guaranteed
+kubectl rollout undo deployment my-deployment --to-revision=1
+это откат деплоймента на 1 версию назад
