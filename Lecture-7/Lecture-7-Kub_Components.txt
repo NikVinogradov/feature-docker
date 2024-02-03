@@ -1,0 +1,8 @@
+Компоненты кубернетеса
+
+Etcd
+API server
+Controller-manager
+Scheduler
+Kubelet
+Kube-proxy
