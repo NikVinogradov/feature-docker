@@ -1,0 +1,52 @@
+Job
+она выполняется в кластере кубера только 1 раз
+она создает под для выполнения задачи
+перезапускает поды до успешного выполнения задачи
+или истечения таймаутов
+activeDeadLineSeconds
+backoffLimit
+
+например: настройка окружения (создание веток как на SP)
+kubectl get job
+
+kubectl delete job
+- удалить, CG их не удаляют
+
+kubectl describe job hello
+
+restartPolicy - относится к контейнеру
+поэтому если установить backoffLimit
+но забыть установить restartPolicy, то контейнер может
+перезапускаться а джоба думать что контейнер просто
+долго работает и этот процесс может уйти в бесконечность
+
+CronJob
+создает Job по расписанию
+Важные параметры:
+1) startingDeadlineSeconds
+2) concurrencyPolicy (Allow, Firbid, Replace) - одновременное выполнение Job, Replace - заменяет запущенную нагрузку
+3) successfulJobsHistoryLimit - кол-во job которые остаются в кластере
+4) failedJobsHistoryLimit - кол-во job которые остаются в кластере
+CronJob - не только создает Job, но и удаляет старые
+на основе значений successfulJobsHistoryLimit, failedJobsHistoryLimit
+у данных значений есть дефолтные лимиты
+success - 3
+failed - 1
+
+ВАЖНО!!!
+Джобы должны быть иденпотентными
+так как может быть такое что одна джоба запустит
+несколько подов
+
+RBAC - система контроля прав, кто может что-то делать, а кто нет
+
+Role
+RoleBinding
+ClucterRole
+ClusterRoleBinding
+ServiceAccount
+
+ServiceAccount
+kubectl get sa user -o yaml
+
+kubectl describe secrets <название секрета>
